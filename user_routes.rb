@@ -19,8 +19,19 @@ get '/users/new' do
   haml :new_user
 end
 
+get '/users' do
+	@users = User.all
+	haml :users
+end
+
+get %r{^/users/(\d+)$} do
+  @user = User.first(:id => params[:captures][0])
+  status 404 and return "User not found" unless @user  
+  haml :user
+end
+
 post '/users' do
-  unless params[:password] && params[:login] && (params[:password].blank? || params[:login].blank?)
+  unless params[:password] && params[:login] && (params[:password].empty? || params[:login].empty?)
     unless User.first(:login => params[:login])
       create_user(params[:login], params[:password])
       redirect '/login'

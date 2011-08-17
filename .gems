@@ -1,0 +1,8 @@
+sinatra
+data_mapper
+rack-flash
+sinatra-redirect-with-flash
+builder
+dm-postgres-adapter
+haml
+sass

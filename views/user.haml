@@ -1,0 +1,1 @@
+%h4 Posts%ul  - if @user.posts.length > 0    - @user.posts.each do |post|      %li.post        %a{:href=>"/forums/#{post.topic.forum.id}/topics/#{post.topic.id}"}= post.topic.title        %div.post-body= sanitize(post.body)        %div.poster= "posted by #{post.user.login} at #{post.created_at} ago"  - else    %li There are no posts 	    

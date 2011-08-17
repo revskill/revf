@@ -3,8 +3,8 @@ $:.unshift File.dirname(__FILE__)
 
 require 'rubygems'
 require 'sinatra'
-require 'dm-core'
-require 'sinatra/reloader' if development?
+require 'data_mapper'
+
 
 require 'models'
 
@@ -14,8 +14,10 @@ configure do
   enable :sessions
   DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/tinyfora.db")
   # DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/tinyfora.db")
+  #DataMapper.setup(:default, 'postgres://postgres:postgres@localhost/tinyfora')
   DataMapper::Logger.new(STDOUT, :debug)
-  DataMapper.auto_migrate! unless File.exists?('tinyfora.db')
+  DataMapper.auto_migrate!
+
 end
 
 before do

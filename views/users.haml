@@ -1,0 +1,13 @@
+%h3 Users
+%ul
+  - if @users.length > 0
+    - @users.each do |u|
+      %li.post
+        %a{:href=>"/users/#{u.id}"}= u.login
+        %span.item-count= "(#{u.posts.length} #{u.posts.length == 1 ? "post" : "posts"})"
+        %div.poster= u.login
+  - else
+    %li
+      There are no users
+
+      
