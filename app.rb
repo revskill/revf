@@ -16,7 +16,7 @@ configure do
   # DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/tinyfora.db")
   #DataMapper.setup(:default, 'postgres://postgres:postgres@localhost/tinyfora')
   DataMapper::Logger.new(STDOUT, :debug)
-  DataMapper.auto_migrate!
+  
 
 end
 
